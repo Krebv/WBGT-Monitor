@@ -23,11 +23,14 @@ jobs:
     - name: Install dependencies
       run: npm ci
     
-    - name: Type check (Project References)
-      run: npx tsc --build --force
+    - name: Type check
+      run: npx tsc -b --force
     
     - name: Build project
-      run: npm run build --if-present
+      run: npm run build
     
     - name: Run tests
       run: npm test --if-present
+    
+    - name: Run lint
+      run: npm run lint --if-present
