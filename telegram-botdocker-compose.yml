@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  wbgt-bot:
+    build: .
+    container_name: wbgt-telegram-bot
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+    volumes:
+      - ./subscriptions.json:/app/subscriptions.json
+    restart: unless-stopped
