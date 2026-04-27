@@ -2,9 +2,9 @@
 """
 WBGT Heat Stress Telegram Bot
 Sends alerts at different frequencies based on heat stress levels:
-- Low: Every 60 minutes
-- Moderate: Every 30 minutes  
-- High: Every 15 minutes
+- Low: Every 30 minutes
+- Moderate: Every 15 minutes  
+- High: Every 5 minutes
 """
 
 import os
@@ -174,7 +174,7 @@ class WBGTBot:
             return True
         
         # Check if enough time has passed based on heat stress level
-        frequency_minutes = ALERT_FREQUENCIES.get(heat_stress, 60)
+        frequency_minutes = ALERT_FREQUENCIES.get(heat_stress, 30)
         time_since_last = now - subscription.last_alert_time
         
         return time_since_last >= timedelta(minutes=frequency_minutes)
@@ -305,9 +305,9 @@ I'll help you monitor heat stress levels at Singapore workplaces and send alerts
 /help - Show this help message
 
 <b>Alert frequencies:</b>
-🟢 Low Heat Stress - Every 60 minutes
-🟡 Moderate Heat Stress - Every 30 minutes  
-🔴 High Heat Stress - Every 15 minutes
+🟢 Low Heat Stress - Every 30 minutes
+🟡 Moderate Heat Stress - Every 15 minutes  
+🔴 High Heat Stress - Every 5 minutes
 
 Stay safe! 🛡
 """
@@ -381,9 +381,9 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
             f"📍 Station: {station_name}\n"
             f"🆔 ID: <code>{station_id}</code>\n\n"
             f"You'll receive alerts based on heat stress levels:\n"
-            f"🟢 Low - Every 60 min\n"
-            f"🟡 Moderate - Every 30 min\n"
-            f"🔴 High - Every 15 min\n\n"
+            f"🟢 Low - Every 30 min\n"
+            f"🟡 Moderate - Every 15 min\n"
+            f"🔴 High - Every 5 min\n\n"
             f"Use /status to check current WBGT.",
             parse_mode='HTML'
         )
