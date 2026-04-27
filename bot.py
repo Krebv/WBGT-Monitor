@@ -163,9 +163,11 @@ class WBGTBot:
         """Check if alert should be sent based on frequency"""
         now = datetime.now()
         
-        # If heat stress level changed, send alert immediately
-        if subscription.last_heat_stress != heat_stress:
-            return True
+       def should_send_alert(self, subscription, heat_stress):
+    # If heat stress level changed, send alert immediately
+    if subscription.last_heat_stress != heat_stress:
+        return True
+    # Otherwise check time interval...
         
         # If no previous alert, send alert
         if subscription.last_alert_time is None:
